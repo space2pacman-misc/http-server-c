@@ -76,11 +76,15 @@ int initSendMessage() {
 
   } while (intChar != EOF);
 
+  int x = strlen(myString) - 1;
+  char buffer[sizeof(int) * 4 + 1];
+  sprintf(buffer, "%d", x);
+
   strcpy(message, "HTTP/1.1 200 OK\r\n");
   strcat(message, "Server: C\r\n");
   strcat(message, "Content-Type: text/html\r\n");
   strcat(message, "Content-Length: ");
-  strcat(message, "209");
+  strcat(message, buffer);
   strcat(message, "\r\n\r\n");
   strcat(message, myString);
 
